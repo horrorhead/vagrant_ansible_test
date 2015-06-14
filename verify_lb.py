@@ -51,9 +51,6 @@ USAGE
 
 try:
     # Setup argument parser
-    print("Adding arguments to argument parser")
-    
-    print()
     parser = ArgumentParser(description=program_license)
     parser.add_argument("-n", dest="request_count", action="store", required=True, type=int, help="Number of requests to perform")
     parser.add_argument("-v", dest="verbose", action="store_true", help="set verbosity level [default: %(default)s]")
