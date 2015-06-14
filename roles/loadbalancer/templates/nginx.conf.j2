@@ -1,0 +1,35 @@
+# {{ ansible_managed }}
+user www-data;
+worker_processes 4;
+pid /var/run/nginx.pid;
+
+events {
+	worker_connections 768;
+	# multi_accept on;
+}
+
+http {
+
+	##
+	# Logging Settings
+	##
+
+	access_log /var/log/nginx/access.log;
+	error_log /var/log/nginx/error.log;
+
+    upstream webservers {
+    	server 192.168.1.120;
+    	server 192.168.1.121;
+{% for host in groups['lb'] %}
+#        server {{ hostvars[host]['ansible_eth0'] }};
+{% endfor %}
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://webservers;
+        }
+    }
+}
