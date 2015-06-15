@@ -20,8 +20,10 @@ http {
     upstream webservers {
     	server 192.168.1.120;
     	server 192.168.1.121;
+#    	server 192.168.1.122;
+
 {% for host in groups['lb'] %}
-#        server {{ hostvars[host]['ansible_eth0'] }};
+#        server {{ hostvars[host]['ansible_eth0']['ipv4']['address'] }};
 {% endfor %}
     }
 

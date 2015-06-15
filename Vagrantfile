@@ -27,4 +27,11 @@ Vagrant.configure("2") do |config|
     web02.vm.network "private_network", ip: "192.168.1.121"
   end
 
+#  config.vm.define "web03" do |web03|
+#    web03.vm.box = "hashicorp/precise32"
+#    web03.vm.hostname = "web03"
+#    web03.vm.network "private_network", ip: "192.168.1.122"
+#  end
+
+
 end
